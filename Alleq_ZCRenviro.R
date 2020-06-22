@@ -55,34 +55,83 @@ summary(df_ZCR1)
 
 
 # Look for Chl-a correlations with all zoop groups:
-pDP_B <- ggplot(df_ZCR1, aes(x=DpulicariaDens, y=BosminaDens, alpha = 0.5)) +
+pChla_B <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=BosminaDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() #+ geom_smooth(method="lm", se=F)
+
+lmChla_B <- glm(BosminaDens~ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_B) # not sig 
+
+pChla_CD <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=CerioDens, alpha = 0.5)) +
   geom_point()+ theme_bw() + geom_smooth(method="lm", se=F)
 
-lmDP_B <- glm(BosminaDens~DpulicariaDens, data = df_ZCR1) 
-summary(lmDP_B) # marginal sig 
+lmChla_CD<- glm(CerioDens~ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_CD) # marginal sig 
 
-pDP_CD <- ggplot(df_ZCR1, aes(x=DpulicariaDens, y=CerioDens, alpha = 0.5)) +
+pChla_DM <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=DmendoateDens, alpha = 0.5)) +
   geom_point()+ theme_bw() 
 
-lmDP_CD<- glm(CerioDens~DpulicariaDens, data = df_ZCR1) 
-summary(lmDP_CD) # not sig 
+lmChla_DM <- glm(DmendoateDens ~ ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_DM) # not sig 
 
-pDP_DM <- ggplot(df_ZCR1, aes(x=DpulicariaDens, y=DmendoateDens, alpha = 0.5)) +
+pChla_DPHAN <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=DiaphanosomaDens, alpha = 0.5)) +
+  geom_point()+ theme_bw()
+
+lmChla_DPHAN <- glm(DiaphanosomaDens ~ ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_DPHAN) # not sig
+
+pChla_HG <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=HolopediumDens, alpha = 0.5)) +
+  geom_point()+ theme_bw()
+
+lmChla_HG <- glm(HolopediumDens ~ ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_HG) #not sig
+
+pChla_DP <- ggplot(df_ZCR1, aes(x=ChlorophyllMax, y=DpulicariaDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() + geom_smooth(method="lm", se=F)
+
+lmChla_DP <- glm(DpulicariaDens ~ ChlorophyllMax, data = df_ZCR1) 
+summary(lmChla_DP) # sig
+
+# Notes:
+# Based off just chl-a data D.pulicaria may be most effective grazers. 
+# Also positive relationship of Cerio on Chla, but no relationship btwn Cerio and D.pulicaria 
+
+# Look for Water Temp correlations with all zoop groups/ incase of winter dynamics:
+pWT_B <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=BosminaDens, alpha = 0.5)) +
   geom_point()+ theme_bw() 
 
-lmDP_DM <- glm(DmendoateDens ~ DpulicariaDens, data = df_ZCR1) 
-summary(lmDP_DM) # not sig 
+lmWT_B <- glm(BosminaDens~HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_B) # not sig 
 
-pDP_DPHAN <- ggplot(df_ZCR1, aes(x=DpulicariaDens, y=DiaphanosomaDens, alpha = 0.5)) +
+pWT_CD <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=CerioDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() + geom_smooth(method="lm", se=F)
+
+lmWT_CD<- glm(CerioDens~HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_CD) # Sig +
+
+pWT_DM <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=DmendoateDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() 
+
+lmWT_DM <- glm(DmendoateDens ~ HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_DM) # not sig 
+
+pWT_DPHAN <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=DiaphanosomaDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() + geom_smooth(method="lm", se=F)
+
+lmWT_DPHAN <- glm(DiaphanosomaDens ~ HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_DPHAN) # sig +
+
+pWT_HG <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=HolopediumDens, alpha = 0.5)) +
   geom_point()+ theme_bw()
 
-lmDP_DPHAN <- glm(DiaphanosomaDens ~ DpulicariaDens, data = df_ZCR1) 
-summary(lmDP_DPHAN) #not sig
+lmWT_HG <- glm(HolopediumDens ~ HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_HG) #not sig
 
-pDP_HG <- ggplot(df_ZCR1, aes(x=DpulicariaDens, y=HolopediumDens, alpha = 0.5)) +
-  geom_point()+ theme_bw()
+pWT_DP <- ggplot(df_ZCR1, aes(x=HypolimnionTemp, y=DpulicariaDens, alpha = 0.5)) +
+  geom_point()+ theme_bw() + geom_smooth(method="lm", se=F)
 
-lmDP_HG <- glm(HolopediumDens ~ DpulicariaDens, data = df_ZCR1) 
-summary(lmDP_HG) #not sig
+lmWT_DP <- glm(DpulicariaDens ~ HypolimnionTemp, data = df_ZCR1) 
+summary(lmWT_DP) # sig -
 
-
+# Notes:
+# Based off hypo water temperature, cerio and Diaphanosoma are positively associated
+#   while D.pulicaria is negatively associated
