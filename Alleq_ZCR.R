@@ -103,11 +103,16 @@ lmDP_HG <- glm(HolopediumDens ~ DpulicariaDens, data = df_ZCR1)
 summary(lmDP_HG) #not sig
 
 # Issues: 
-# 1. Might not be enough data positive obs of taxa to use ordination 
+# 1. Might not be enough data positive obs of taxa to use ordination
+# 2. Best way to satisitically test for competition?
+# 3. Should we eliminate ice-cover obs?
+# 4. Might pause here to look at the phys obs for a minute.
 
-## ---------------------------
-# II. Data exploration:
-#  Modelling bimass of certain groups with envir
+
+
+
+
+
 
 
 
