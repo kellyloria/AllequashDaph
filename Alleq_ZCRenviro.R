@@ -1,5 +1,6 @@
 ## ---------------------------
 ## Allequash Zooplankton Competitive Release/ Environmental Correlations
+##      *Goal to seee if more variation is explained from environemnt or from Daph. pulicaria.
 ##
 ## Author: Kelly A. Loria
 ## Date Created: 2020-06-22
